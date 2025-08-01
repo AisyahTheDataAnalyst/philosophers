@@ -6,7 +6,7 @@
 /*   By: aimokhta <aimokhta@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 11:11:41 by aimokhta          #+#    #+#             */
-/*   Updated: 2025/07/02 10:35:35 by aimokhta         ###   ########.fr       */
+/*   Updated: 2025/07/17 19:48:27 by aimokhta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	create_philo(t_data *data, t_philo **philo)
 
 void	*philo_routine(void *arg)
 {
-	t_data *data;
+	t_data	*data;
 
 	data = (t_data *)arg;
 	pthread_mutex_init(&data->, NULL);

@@ -6,7 +6,7 @@
 /*   By: aimokhta <aimokhta@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 10:30:39 by aimokhta          #+#    #+#             */
-/*   Updated: 2025/06/26 15:49:02 by aimokhta         ###   ########.fr       */
+/*   Updated: 2025/07/25 16:25:46 by aimokhta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	printing(char *str)
 {
 	t_milisecond 	curr_time;
 	t_data 			*data;
-	
+
 	curr_time = data->philo->last_meal_time - data->start_time;
 	printf("%ld %d %s", curr_time, data->philo->id, str);
 }

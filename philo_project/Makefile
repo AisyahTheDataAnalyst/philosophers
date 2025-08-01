@@ -6,7 +6,7 @@
 #    By: aimokhta <aimokhta@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/19 18:19:41 by aimokhta          #+#    #+#              #
-#    Updated: 2025/07/01 14:22:02 by aimokhta         ###   ########.fr        #
+#    Updated: 2025/07/22 14:57:03 by aimokhta         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,13 @@ CFLAG = -Wall -Wextra -Werror#make -g3 -O3 -O0 -fsanitize=address \
 #helgrind
 
 #link option 
-LFLAG = -pthread#-g
+LFLAG = -pthread #-g
 
 # directory that contains source files
 SRC_DIR = src
 
 SRC =	\
-		$(SRC_DIR)/philo_2.c \
+		$(SRC_DIR)/philo.c \
 		$(SRC_DIR)/parsing.c \
 		$(SRC_DIR)/utils.c \
 	

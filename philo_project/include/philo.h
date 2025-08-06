@@ -6,7 +6,7 @@
 /*   By: aimokhta <aimokhta@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 18:19:36 by aimokhta          #+#    #+#             */
-/*   Updated: 2025/07/01 14:32:50 by aimokhta         ###   ########.fr       */
+/*   Updated: 2025/08/06 09:45:46 by aimokhta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,47 +21,46 @@
 # include <sys/time.h> 
 # include <string.h>
 
-typedef long	t_milisecond;
-
-typedef struct s_arg
-{
-	int				num_of_philo;
-	t_milisecond	time_to_die;
-	t_milisecond	time_to_eat;
-	t_milisecond	time_to_sleep;
-	int				times_each_philo_must_eat;
-}	t_arg;
+typedef struct s_data	t_data;
 
 typedef struct s_philo
 {
-	pthread_t		*thread;
 	int				id;
-	t_milisecond	last_meal_time;
-	pthread_mutex_t	*mutex_meal;
-	pthread_mutex_t	*l_fork;
-	pthread_mutex_t	*r_fork;
-	// struct			s_data;
+	int				last_meal_time;
+	pthread_t		*thread;
+	pthread_mutex_t	*right_fork; // just a pointer to data->forks
+	pthread_mutex_t	*left_fork; /// just a pointer to data->forks
+	pthread_mutex_t	meal_count;
+	t_data			*data;
 }	t_philo;
 
 typedef struct s_data
 {
-	t_arg			arg;
-	t_philo			*philo;
-	pthread_mutex_t	*mutex_death;
-	pthread_mutex_t	*mutex_print;
-	t_milisecond	start_time;
-	bool			simulation_end;
-	int				forks;
+	int				num_of_philo;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				total_meal_frequency;
+	int				start_time;
+	bool			someone_died;
+	t_philo			*philo; // malloced
+	pthread_mutex_t	*forks; // malloced, thats why it has *pointer
+	pthread_mutex_t	mutex_death;
+	pthread_mutex_t	mutex_print;
 }	t_data;
 
-
+// main.c
+// int		start_simulation(t_data *data);
 
 //parsing.c
-int				parsing(int ac, char **av, t_data *data);
+int		parsing(int ac, char **av, t_data *data);
 
 // utils.c
-int				ft_atoi(const char *str);
-t_milisecond	ft_atol(const char *str);
-t_milisecond	get_time_milisec(void);
+bool	arg_is_valid_digit(char **av);
+int		ft_atoi(const char *str);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putendl_fd(char *s, int fd);
+int		ft_isdigit(int d);
+int		get_time_milisec(void);
 
 #endif

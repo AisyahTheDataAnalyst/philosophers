@@ -6,7 +6,7 @@
 /*   By: aimokhta <aimokhta@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 10:30:39 by aimokhta          #+#    #+#             */
-/*   Updated: 2025/08/06 09:34:18 by aimokhta         ###   ########.fr       */
+/*   Updated: 2025/08/07 17:35:01 by aimokhta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,25 +60,6 @@ int	ft_atoi(const char *str)
 	return ((int)(result * sign));
 }
 
-void	ft_putendl_fd(char *s, int fd)
-{
-	if (!s || fd < 0)
-		return ;
-	ft_putstr_fd(s, fd);
-	write(fd, "\n", 1);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	if (!s || fd < 0)
-		return ;
-	while (*s)
-	{
-		write(fd, s, 1);
-		s++;
-	}
-}
-
 int	ft_isdigit(int d)
 {
 	if (d >= '0' && d <= '9')
@@ -87,19 +68,21 @@ int	ft_isdigit(int d)
 }
 
 //turning the time into miliseconds
-int	get_time_milisec(void)
+long	get_time_milisec(void)
 {
 	struct timeval	now;
 
 	gettimeofday(&now, NULL);
-	return ((int)(now.tv_sec * 1000) + (now.tv_usec / 1000));
+	return ((long)(now.tv_sec * 1000) + (now.tv_usec / 1000));
 }
 
-// void	printing(char *str)
-// {
-// 	long 	curr_time;
-// 	t_data 			*data;
+void	printing_philo(t_philo *philo, long start_time, char *msg)
+{
+	long	current_time;
 
-// 	curr_time = data->philo->last_meal_time - data->start_time;
-// 	printf("%ld %d %s", curr_time, data->philo->id, str);
-// }
+	current_time = get_time_milisec() - start_time;
+	pthread_mutex_lock(&philo->data->mutex_print);
+	printf("%ld %d %s\n", current_time, philo->id, msg);
+	pthread_mutex_unlock(&philo->data->mutex_print);
+
+}

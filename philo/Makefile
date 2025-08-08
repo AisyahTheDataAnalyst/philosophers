@@ -6,7 +6,7 @@
 #    By: aimokhta <aimokhta@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/19 18:19:41 by aimokhta          #+#    #+#              #
-#    Updated: 2025/08/08 10:02:19 by aimokhta         ###   ########.fr        #
+#    Updated: 2025/08/08 18:14:49 by aimokhta         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ NAME = philo
 CC = cc
 
 #compilation flags
-CFLAG = -Wall -Werror -Wextra -g -O0 -fsanitize=address #-fsanitize-recover=leak
-# -g3 -O3 -O0 -fsanitize=address 
+CFLAG = -Wall -Werror -Wextra -g -O0
+# -g3 -O3 -O0 -fsanitize=address -fsanitize-recover=leak
 # valgrind --leak-check=full --show-leak-kinds=all
 # valgrind --tool=helgrind
 # -g = gives error messages for debugging, needed by gdb / valgrind / helgrind
@@ -35,7 +35,7 @@ SRC =	\
 		$(SRC_DIR)/3_philo_routine.c \
 		$(SRC_DIR)/4_philo_check.c \
 		$(SRC_DIR)/5_monitor.c \
-		$(SRC_DIR)/utils.c \
+		$(SRC_DIR)/utils.c
 	
 INC = -I include
 # this is what is caused to not write explicit path for all #includes in all header and c files

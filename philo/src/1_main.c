@@ -6,7 +6,7 @@
 /*   By: aimokhta <aimokhta@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 14:47:26 by aimokhta          #+#    #+#             */
-/*   Updated: 2025/08/08 11:00:21 by aimokhta         ###   ########.fr       */
+/*   Updated: 2025/08/08 16:14:53 by aimokhta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ static void	freeing(t_data *data)
 
 	if (data->philo)
 	{
-
 		i = 0;
 		while (i < data->num_of_philo)
 		{
@@ -67,11 +66,9 @@ static void	freeing(t_data *data)
 			pthread_mutex_destroy(&data->forks[i]);
 			i++;
 		}
-		fprintf(stderr, "freeing malloced\n");
 		free(data->philo);
 		free(data->forks);
 	}
 	pthread_mutex_destroy(&data->mutex_print);
 	pthread_mutex_destroy(&data->mutex_death);
-	fprintf(stderr, "freed malloc and destroy mutex\n");
 }

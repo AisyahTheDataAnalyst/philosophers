@@ -6,7 +6,7 @@
 /*   By: aimokhta <aimokhta@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 18:19:36 by aimokhta          #+#    #+#             */
-/*   Updated: 2025/08/08 11:00:21 by aimokhta         ###   ########.fr       */
+/*   Updated: 2025/08/08 15:05:47 by aimokhta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ typedef struct s_data
 	int				meal_frequency;
 	bool			someone_died;
 	bool			all_have_eaten_enough;
-	bool			print_once_only;
 	long			start_time;
 	t_philo			*philo; // malloced
 	pthread_mutex_t	*forks; // malloced, thats why it has *pointer

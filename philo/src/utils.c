@@ -6,7 +6,7 @@
 /*   By: aimokhta <aimokhta@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 10:30:39 by aimokhta          #+#    #+#             */
-/*   Updated: 2025/08/08 09:54:39 by aimokhta         ###   ########.fr       */
+/*   Updated: 2025/08/08 17:50:44 by aimokhta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,13 @@ void	printing_philo(t_philo *philo, long start_time, char *msg)
 {
 	long	current_time;
 
+	pthread_mutex_lock(&philo->data->mutex_death);
 	pthread_mutex_lock(&philo->data->mutex_print);
 	if (!philo->data->someone_died && !philo->data->all_have_eaten_enough)
 	{
 		current_time = get_time_milisec() - start_time;
-		printf("%ld %d %s\n", current_time, philo->id, msg);	
+		printf("%ld %d %s\n", current_time, philo->id, msg);
 	}
 	pthread_mutex_unlock(&philo->data->mutex_print);
+	pthread_mutex_unlock(&philo->data->mutex_death);
 }

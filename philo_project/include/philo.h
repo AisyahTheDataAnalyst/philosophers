@@ -6,7 +6,7 @@
 /*   By: aimokhta <aimokhta@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 18:19:36 by aimokhta          #+#    #+#             */
-/*   Updated: 2025/08/07 18:22:54 by aimokhta         ###   ########.fr       */
+/*   Updated: 2025/08/08 11:00:21 by aimokhta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_philo
 	pthread_t		thread;
 	pthread_mutex_t	*right_fork; // just a pointer to data->forks
 	pthread_mutex_t	*left_fork; /// just a pointer to data->forks
-	pthread_mutex_t	mutex_meal_count;
+	pthread_mutex_t	mutex_meal;
 	t_data			*data;
 }	t_philo;
 

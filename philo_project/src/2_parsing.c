@@ -6,7 +6,7 @@
 /*   By: aimokhta <aimokhta@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 16:12:20 by aimokhta          #+#    #+#             */
-/*   Updated: 2025/08/07 18:22:57 by aimokhta         ###   ########.fr       */
+/*   Updated: 2025/08/08 11:00:21 by aimokhta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ static int	parsing_arguments(int ac, char **av, t_data *data)
 	if ((ac == 5 || ac == 6) && arg_is_valid_digit(av) == true)
 	{
 		data->num_of_philo = ft_atoi(av[1]);
+		if (data->num_of_philo > 200)
+			return (1);
 		data->time_to_die = ft_atoi(av[2]);
 		data->time_to_eat = ft_atoi(av[3]);
 		data->time_to_sleep = ft_atoi(av[4]);
@@ -41,6 +43,8 @@ static int	parsing_arguments(int ac, char **av, t_data *data)
 		else
 			data->meal_frequency = 0;
 	}
+	else
+		return (1);
 	if (data->num_of_philo == 0 || data->time_to_die == 0 || \
 data->time_to_eat == 0 || data->time_to_sleep == 0)
 		return (1);
@@ -69,10 +73,10 @@ static int	parsing_struct_members(t_philo *philo, t_data *data)
 	{
 		philo[i].id = i + 1;
 		philo[i].total_meal_eaten = 0;
-		philo[i].last_meal_time = get_time_milisec();
+		// philo[i].last_meal_time = data->start_time;
 		philo[i].right_fork = &data->forks[i];
 		philo[i].left_fork = &data->forks[(i + 1) % data->num_of_philo];
-		if (pthread_mutex_init(&philo[i].mutex_meal_count, NULL) != 0)
+		if (pthread_mutex_init(&philo[i].mutex_meal, NULL) != 0)
 			return (1);
 		if (pthread_mutex_init(&data->forks[i], NULL) != 0)
 			return (1);

@@ -6,7 +6,7 @@
 #    By: aimokhta <aimokhta@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/19 18:19:41 by aimokhta          #+#    #+#              #
-#    Updated: 2025/08/07 18:11:27 by aimokhta         ###   ########.fr        #
+#    Updated: 2025/08/08 10:02:19 by aimokhta         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = philo
 CC = cc
 
 #compilation flags
-CFLAG = -Wall -Werror -Wextra -g -O0 -fsanitize=address -fsanitize-recover=leak
+CFLAG = -Wall -Werror -Wextra -g -O0 -fsanitize=address #-fsanitize-recover=leak
 # -g3 -O3 -O0 -fsanitize=address 
 # valgrind --leak-check=full --show-leak-kinds=all
 # valgrind --tool=helgrind
@@ -32,9 +32,9 @@ SRC_DIR = src
 SRC =	\
 		$(SRC_DIR)/1_main.c \
 		$(SRC_DIR)/2_parsing.c \
-		$(SRC_DIR)/3.1_philo.c \
-		$(SRC_DIR)/3.2_philo.c \
-		$(SRC_DIR)/4_monitor.c \
+		$(SRC_DIR)/3_philo_routine.c \
+		$(SRC_DIR)/4_philo_check.c \
+		$(SRC_DIR)/5_monitor.c \
 		$(SRC_DIR)/utils.c \
 	
 INC = -I include

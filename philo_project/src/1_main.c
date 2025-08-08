@@ -6,7 +6,7 @@
 /*   By: aimokhta <aimokhta@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 14:47:26 by aimokhta          #+#    #+#             */
-/*   Updated: 2025/08/07 12:39:45 by aimokhta         ###   ########.fr       */
+/*   Updated: 2025/08/08 11:00:21 by aimokhta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static int	start_simulation(t_data *data)
 	i = -1;
 	while (++i < data->num_of_philo)
 	{
+		data->philo[i].last_meal_time = data->start_time;
 		if (pthread_create(&data->philo[i].thread, NULL, \
 &philo_routine, &data->philo[i]) != 0)
 			return (printf("Failed to create philosophers\n"), 1);
@@ -62,7 +63,7 @@ static void	freeing(t_data *data)
 		i = 0;
 		while (i < data->num_of_philo)
 		{
-			pthread_mutex_destroy(&data->philo[i].mutex_meal_count);
+			pthread_mutex_destroy(&data->philo[i].mutex_meal);
 			pthread_mutex_destroy(&data->forks[i]);
 			i++;
 		}
